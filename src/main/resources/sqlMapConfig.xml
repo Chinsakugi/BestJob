@@ -8,4 +8,14 @@
     <typeAliases>
         <package name="cn.czy.domain"/>
     </typeAliases>
+    
+<!--    数据源环境-->
+    
+    
+<!--    分页助手-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
 </configuration>
