@@ -4,18 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
     <!-- 配置别名，domain包下的所有类可以用类名代替全限定类名 -->
     <typeAliases>
-        <package name="cn.czy.domain"/>
+        <package name="com.czy.domain"/>
     </typeAliases>
-    
-<!--    数据源环境-->
-    
-    
-<!--    分页助手-->
-    <plugins>
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-            <property name="dialect" value="mysql"/>
-        </plugin>
-    </plugins>
+
 </configuration>
