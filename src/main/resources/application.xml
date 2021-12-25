@@ -33,6 +33,7 @@
         <property name="mapperLocations">
             <array>
                 <value>classpath:mapper/userMapper.xml</value>
+                <value>classpath:mapper/companyMapper.xml</value>
             </array>
         </property>
         <!--   分页助手     -->

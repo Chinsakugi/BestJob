@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czy.dao.CompanyDao">
+
+    <select id="findAllCompany" resultType="company">
+        select * from company
+    </select>
+
+    <insert id="insertCompany" parameterType="company">
+        insert into company values (#{id},#{password},#{companyName},#{address},#{description},#{username},#{email})
+    </insert>
+
+    <update id="updateCompany" parameterType="company">
+        update company set password = #{password}, companyName = #{companyName}, address = #{address}, description=#{description},username=#{username},email=#{email} where id = #{id}
+    </update>
+
+</mapper>
