@@ -32,7 +32,7 @@
         <!--  指定mybatis映射文件位置      -->
         <property name="mapperLocations">
             <array>
-                <value>classpath:mapper/studentMapper.xml</value>
+                <value>classpath:mapper/userMapper.xml</value>
             </array>
         </property>
         <!--   分页助手     -->
@@ -60,14 +60,15 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 <!--    配置事务增强-->
-    <tx:advice id="txAdvice">
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="*"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="*" isolation="DEFAULT"/>
         </tx:attributes>
     </tx:advice>
 <!--    事务的aop织入-->
     <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.czy.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.czy.service.impl.*ServiceImpl.*(..))"/>
     </aop:config>
 
     <context:component-scan base-package="com.czy"/>

@@ -7,4 +7,8 @@
         select * from student
     </select>
 
+    <insert id="insertStudent" parameterType="student">
+        insert into student values(#{id},#{name})
+    </insert>
+
 </mapper>
