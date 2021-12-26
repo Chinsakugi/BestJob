@@ -23,4 +23,10 @@ public class CompanyTest {
         System.out.println(companyList);
     }
 
+    @Test
+    public void loginTest(){
+        Company company = companyService.login("byteDance","123456");
+        System.out.println(company);
+    }
+
 }

@@ -16,4 +16,8 @@
         update company set password = #{password}, companyName = #{companyName}, address = #{address}, description=#{description},username=#{username},email=#{email} where id = #{id}
     </update>
 
+    <select id="findCompanyByUsernameAndPassword" resultType="company">
+        select * from company where username = #{username} and password = #{password}
+    </select>
+
 </mapper>

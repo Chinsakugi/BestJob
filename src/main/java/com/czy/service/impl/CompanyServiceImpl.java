@@ -28,4 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
     public void updateCompany(Company company) {
         companyDao.updateCompany(company);
     }
+
+    @Override
+    public Company login(String username, String password) {
+        return companyDao.findCompanyByUsernameAndPassword(username,password);
+    }
 }

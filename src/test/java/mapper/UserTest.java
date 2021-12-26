@@ -1,5 +1,6 @@
 package mapper;
 
+import com.czy.dao.UserDao;
 import com.czy.domain.User;
 import com.czy.service.UserService;
 import org.junit.Test;
@@ -16,6 +17,9 @@ public class UserTest {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserDao userDao;
 
     @Test
     public void findAllUserTest(){
@@ -37,4 +41,21 @@ public class UserTest {
         findAllUserTest();
     }
 
+    @Test
+    public void findUserByIdTest(){
+        Integer id = 2;
+        System.out.println(userDao.findUserById(id));
+    }
+
+    @Test
+    public void loginTest(){
+        User user = userService.login("19921879687", "123456");
+        System.out.println(user);
+    }
+
+    @Test
+    public void findUserByPhoneTest(){
+        User user = userService.findUserByPhone("11111");
+        System.out.println(user);
+    }
 }

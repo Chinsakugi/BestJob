@@ -10,4 +10,6 @@ public interface CompanyService {
     void insertCompany(Company company);
 
     void updateCompany(Company company);
+
+    Company login(String username, String password);
 }

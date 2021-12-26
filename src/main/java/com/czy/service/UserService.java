@@ -10,4 +10,8 @@ public interface UserService {
     void insertUser(User user);
 
     void updateUser(User user);
+
+    User findUserByPhone(String phone);
+
+    User login(String phone, String password);
 }

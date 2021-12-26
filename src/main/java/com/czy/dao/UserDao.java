@@ -1,6 +1,7 @@
 package com.czy.dao;
 
 import com.czy.domain.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +23,16 @@ public interface UserDao {
      *更新用户信息
      */
     void updateUser(User user);
+
+    /**
+     *登录操作  根据电话号码和密码
+     */
+    User findUserByPhoneAndPassword(@Param("phone") String phone, @Param("password") String password);
+
+    /**
+     *注册操作  查询电话号码是否已存在
+     */
+    User findUserByPhone(@Param("phone") String phone);
+
+    User findUserById(Integer id);
 }

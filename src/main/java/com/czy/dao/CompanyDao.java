@@ -1,6 +1,7 @@
 package com.czy.dao;
 
 import com.czy.domain.Company;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface CompanyDao {
      *更新公司信息
      */
     void updateCompany(Company company);
+
+    Company findCompanyByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }

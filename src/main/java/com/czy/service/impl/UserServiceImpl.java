@@ -28,4 +28,16 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         userDao.updateUser(user);
     }
+
+    @Override
+    public User findUserByPhone(String phone) {
+        User user = userDao.findUserByPhone(phone);
+        return user;
+    }
+
+    @Override
+    public User login(String phone, String password) {
+        User user = userDao.findUserByPhoneAndPassword(phone, password);
+        return user;
+    }
 }
