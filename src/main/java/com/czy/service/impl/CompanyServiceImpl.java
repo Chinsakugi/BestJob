@@ -33,4 +33,9 @@ public class CompanyServiceImpl implements CompanyService {
     public Company login(String username, String password) {
         return companyDao.findCompanyByUsernameAndPassword(username,password);
     }
+
+    @Override
+    public Company findCompanyById(Integer id) {
+        return companyDao.findCompanyById(id);
+    }
 }

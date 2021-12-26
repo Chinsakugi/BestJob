@@ -29,4 +29,10 @@ public class CompanyTest {
         System.out.println(company);
     }
 
+    @Test
+    public void findCompanyByIdTest(){
+        Company company = companyService.findCompanyById(1);
+        System.out.println(company);
+    }
+
 }

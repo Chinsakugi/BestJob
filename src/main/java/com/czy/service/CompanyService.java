@@ -12,4 +12,6 @@ public interface CompanyService {
     void updateCompany(Company company);
 
     Company login(String username, String password);
+
+    Company findCompanyById(Integer id);
 }
