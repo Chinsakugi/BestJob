@@ -35,6 +35,7 @@
                 <value>classpath:mapper/userMapper.xml</value>
                 <value>classpath:mapper/companyMapper.xml</value>
                 <value>classpath:mapper/jobMapper.xml</value>
+                <value>classpath:mapper/resumeMapper.xml</value>
             </array>
         </property>
         <!--   分页助手     -->

@@ -1,41 +1,54 @@
 package com.czy.domain;
 
 public class Resume {
+
     private Integer id;
     private Integer userId;
-    private String realName;
+    private String name;
     private String phone;
     private String email;
-    private String birthday;
-    private String gender;
-    private String universityName;
+    private String card;
+    private String loc;
+    private String school;
     private String major;
-    private String degree;
-    private String projectName;
-    private String projectTitle;
-    private String projectDescription;
-    private String awardInfo;
-    private String selfEvaluation;
+    private String edu_time;
+    private String education;
+    private String grade;
+    private String company;
+    private String work_time;
+    private String work_position;
+    private String work_description;
+    private String project;
+    private String project_position;
+    private String project_time;
+    private String project_description;
+    private String self_judge;
 
     public Resume() {
     }
 
-    public Resume(Integer id, Integer userId, String realName, String phone, String email, String birthday, String gender, String universityName, String major, String degree, String projectName, String projectTitle, String projectDescription, String awardInfo, String selfEvaluation) {
+    public Resume(Integer id, Integer userId, String name, String phone, String email, String card, String loc, String school, String major, String edu_time, String education, String grade, String company, String work_time, String work_position, String work_description, String project, String project_position, String project_time, String project_description, String self_judge) {
         this.id = id;
         this.userId = userId;
-        this.realName = realName;
+        this.name = name;
         this.phone = phone;
         this.email = email;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.universityName = universityName;
+        this.card = card;
+        this.loc = loc;
+        this.school = school;
         this.major = major;
-        this.degree = degree;
-        this.projectName = projectName;
-        this.projectTitle = projectTitle;
-        this.projectDescription = projectDescription;
-        this.awardInfo = awardInfo;
-        this.selfEvaluation = selfEvaluation;
+        this.edu_time = edu_time;
+        this.education = education;
+        this.grade = grade;
+        this.company = company;
+        this.work_time = work_time;
+        this.work_position = work_position;
+        this.work_description = work_description;
+        this.project = project;
+        this.project_position = project_position;
+        this.project_time = project_time;
+        this.project_description = project_description;
+        this.self_judge = self_judge;
     }
 
     public Integer getId() {
@@ -54,12 +67,12 @@ public class Resume {
         this.userId = userId;
     }
 
-    public String getRealName() {
-        return realName;
+    public String getName() {
+        return name;
     }
 
-    public void setRealName(String realName) {
-        this.realName = realName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -78,28 +91,28 @@ public class Resume {
         this.email = email;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getCard() {
+        return card;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setCard(String card) {
+        this.card = card;
     }
 
-    public String getGender() {
-        return gender;
+    public String getLoc() {
+        return loc;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setLoc(String loc) {
+        this.loc = loc;
     }
 
-    public String getUniversityName() {
-        return universityName;
+    public String getSchool() {
+        return school;
     }
 
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName;
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     public String getMajor() {
@@ -110,52 +123,100 @@ public class Resume {
         this.major = major;
     }
 
-    public String getDegree() {
-        return degree;
+    public String getEdu_time() {
+        return edu_time;
     }
 
-    public void setDegree(String degree) {
-        this.degree = degree;
+    public void setEdu_time(String edu_time) {
+        this.edu_time = edu_time;
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getEducation() {
+        return education;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setEducation(String education) {
+        this.education = education;
     }
 
-    public String getProjectTitle() {
-        return projectTitle;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setProjectTitle(String projectTitle) {
-        this.projectTitle = projectTitle;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
-    public String getProjectDescription() {
-        return projectDescription;
+    public String getCompany() {
+        return company;
     }
 
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public String getAwardInfo() {
-        return awardInfo;
+    public String getWork_time() {
+        return work_time;
     }
 
-    public void setAwardInfo(String awardInfo) {
-        this.awardInfo = awardInfo;
+    public void setWork_time(String work_time) {
+        this.work_time = work_time;
     }
 
-    public String getSelfEvaluation() {
-        return selfEvaluation;
+    public String getWork_position() {
+        return work_position;
     }
 
-    public void setSelfEvaluation(String selfEvaluation) {
-        this.selfEvaluation = selfEvaluation;
+    public void setWork_position(String work_position) {
+        this.work_position = work_position;
+    }
+
+    public String getWork_description() {
+        return work_description;
+    }
+
+    public void setWork_description(String work_description) {
+        this.work_description = work_description;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
+
+    public String getProject_position() {
+        return project_position;
+    }
+
+    public void setProject_position(String project_position) {
+        this.project_position = project_position;
+    }
+
+    public String getProject_time() {
+        return project_time;
+    }
+
+    public void setProject_time(String project_time) {
+        this.project_time = project_time;
+    }
+
+    public String getProject_description() {
+        return project_description;
+    }
+
+    public void setProject_description(String project_description) {
+        this.project_description = project_description;
+    }
+
+    public String getSelf_judge() {
+        return self_judge;
+    }
+
+    public void setSelf_judge(String self_judge) {
+        this.self_judge = self_judge;
     }
 
     @Override
@@ -163,19 +224,25 @@ public class Resume {
         return "Resume{" +
                 "id=" + id +
                 ", userId=" + userId +
-                ", realName='" + realName + '\'' +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", gender='" + gender + '\'' +
-                ", universityName='" + universityName + '\'' +
+                ", card='" + card + '\'' +
+                ", loc='" + loc + '\'' +
+                ", school='" + school + '\'' +
                 ", major='" + major + '\'' +
-                ", degree='" + degree + '\'' +
-                ", projectName='" + projectName + '\'' +
-                ", projectTitle='" + projectTitle + '\'' +
-                ", projectDescription='" + projectDescription + '\'' +
-                ", awardInfo='" + awardInfo + '\'' +
-                ", selfEvaluation='" + selfEvaluation + '\'' +
+                ", edu_time='" + edu_time + '\'' +
+                ", education='" + education + '\'' +
+                ", grade='" + grade + '\'' +
+                ", company='" + company + '\'' +
+                ", work_time='" + work_time + '\'' +
+                ", work_position='" + work_position + '\'' +
+                ", work_description='" + work_description + '\'' +
+                ", project='" + project + '\'' +
+                ", project_position='" + project_position + '\'' +
+                ", project_time='" + project_time + '\'' +
+                ", project_description='" + project_description + '\'' +
+                ", self_judge='" + self_judge + '\'' +
                 '}';
     }
 }
