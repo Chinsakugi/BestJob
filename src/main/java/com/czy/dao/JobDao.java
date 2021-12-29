@@ -1,6 +1,7 @@
 package com.czy.dao;
 
 import com.czy.domain.Job;
+import com.czy.domain.Record;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +21,6 @@ public interface JobDao {
 
     List<Job> findByMultiCondition(@Param("loc") String loc, @Param("search") String search, @Param("time") String time,
                                    @Param("money") String money, @Param("experience") String experience,@Param("education") String education);
+
+    List<Record> findRecordByUserId(@Param("userId") Integer userId);
 }

@@ -1,10 +1,13 @@
 package com.czy.controller;
 
 import com.czy.domain.Job;
+import com.czy.domain.Record;
+import com.czy.domain.User;
 import com.czy.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -20,5 +23,14 @@ public class JobController {
         List<Job> jobList = jobService.findJobByCompanyNameAndJobCategory(keyword);
         return jobList;
     }
+
+    @RequestMapping(value = "/wanted",method = RequestMethod.GET)
+    @ResponseBody
+    public Object wanted(@RequestParam("session")HttpSession session){
+        User user = (User) session.getAttribute("user");
+        List<Record> recordList = jobService.findRecordByUserId(user.getId());
+        return recordList;
+    }
+
 
 }

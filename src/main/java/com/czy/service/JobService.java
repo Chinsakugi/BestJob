@@ -1,6 +1,7 @@
 package com.czy.service;
 
 import com.czy.domain.Job;
+import com.czy.domain.Record;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,7 @@ public interface JobService {
     List<Job> findJobByCompanyNameAndJobCategory(String keyword);
 
     List<Job> findByMultiCondition(String loc, String search, String time,String money, String experience,String education);
+
+    List<Record> findRecordByUserId(Integer userId);
 
 }

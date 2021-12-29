@@ -19,18 +19,21 @@
     </resultMap>
 
     <resultMap id="recordMap" type="record">
-        <id property="id" column="id"/>
+        <id property="userId" column="uid"/>
+        <id property="jobId" column="jid"/>
         <result property="jobName" column="jobName"/>
         <result property="jobAddress" column="jobAddress"/>
         <result property="companyName" column="companyName"/>
-        <result property="event" column="event"/>
-        <result property="processTime" column="processTime"/>
+        <result property="deliveryTime" column="deliveryTime"/>
+        <result property="evaluationTime" column="evaluationTime"/>
+        <result property="interviewTime" column="interviewTime"/>
+        <result property="stopTime" column="stopTime"/>
+        <result property="offerTime" column="offerTime"/>
     </resultMap>
 
     <select id="findAllJob" resultMap="jobMap">
         select *
-        from job
-                 join company on job.companyId = company.id
+        from job join company on job.companyId = company.id
     </select>
 
     <select id="findJobByCompanyNameAndJobCategory" resultMap="jobMap">
@@ -63,5 +66,10 @@
                 and salary like "%"#{money}"%"
             </if>
         </where>
+    </select>
+    
+    <select id="findRecordByUserId" resultMap="recordMap">
+        select *,user.id uid,job.id jid from user join record join job join company on user.id = record.userId and record.jobId = job.id and job.companyId = company.id
+        where user.id = #{userId}
     </select>
 </mapper>

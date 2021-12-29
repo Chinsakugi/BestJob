@@ -2,6 +2,7 @@ package mapper;
 
 import com.czy.dao.JobDao;
 import com.czy.domain.Job;
+import com.czy.domain.Record;
 import com.czy.service.JobService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,6 +44,12 @@ public class JobTest {
     public void findByMultiConditionTest(){
         List<Job> jobList = jobService.findByMultiCondition("深圳","工程师",null,null,null,null);
         System.out.println(jobList);
+    }
+
+    @Test
+    public void findRecordByUserIdTest(){
+        List<Record> recordList = jobService.findRecordByUserId(1);
+        System.out.println(recordList);
     }
 
 }
