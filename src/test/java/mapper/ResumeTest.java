@@ -17,8 +17,31 @@ public class ResumeTest {
 
     @Test
     public void showUserResumeTest(){
-        Resume resume = resumeService.showUserResume(1);
+        Resume resume = resumeService.showUserResume(2);
         System.out.println(resume);
+    }
+
+    @Test
+    public void updateResume(){
+        Integer userId = 2;
+        Resume resume = new Resume();
+        resume.setName("薛志一");
+        resume.setPhone("123456");
+        resume.setEmail("test");
+        resume.setCard("123");
+        resume.setLoc("上海");
+        resume.setSchool("ecnu");
+        resume.setMajor("software project");
+        resume.setEdu_time("2018");
+        resume.setEducation("benke");
+        resume.setGrade("4.0");
+        resume.setSelf_judge("bad");
+        resumeService.updateResume(resume,userId);
+    }
+
+    @Test
+    public void insertResume(){
+        resumeService.insertResume(3);
     }
 
 }

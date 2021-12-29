@@ -16,4 +16,14 @@ public class ResumeServiceImpl implements ResumeService {
     public Resume showUserResume(Integer userId) {
         return resumeDao.findResumeByUserId(userId);
     }
+
+    @Override
+    public void updateResume(Resume resume,Integer userId) {
+        resumeDao.updateResume(resume,userId);
+    }
+
+    @Override
+    public void insertResume(Integer userId) {
+        resumeDao.insertResume(userId);
+    }
 }

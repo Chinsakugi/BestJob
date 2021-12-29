@@ -4,8 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czy.dao.ResumeDao">
 
-    <select id="findResumeByUserId" resultType="Resume">
+    <select id="findResumeByUserId" resultType="resume">
         select * from resume where userId = #{userId}
     </select>
+
+    <update id="updateResume">
+        update resume set name = #{resume.name}, phone = #{resume.phone}, email=#{resume.email},card=#{resume.card},
+                          loc=#{resume.loc},school=#{resume.school},major=#{resume.major},edu_time=#{resume.edu_time},
+                          education=#{resume.education},grade=#{resume.grade},company=#{resume.company},work_time=#{resume.work_time},
+                          work_position=#{resume.work_position},work_description=#{resume.work_description},project=#{resume.project},
+                          project_position=#{resume.project_position},project_time=#{resume.project_time},project_description=#{resume.project_description},
+                          self_judge=#{resume.self_judge}
+        where userId = #{updateId}
+    </update>
+
+    <insert id="insertResume" keyProperty="id" useGeneratedKeys="true">
+        insert into resume values (null ,#{userId},null,null ,null,null ,null ,null ,null ,null ,null
+                                   ,null ,null ,null ,null ,null ,null ,null ,null ,null ,null )
+    </insert>
 
 </mapper>

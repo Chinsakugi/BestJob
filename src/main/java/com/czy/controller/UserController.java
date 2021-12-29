@@ -1,6 +1,7 @@
 package com.czy.controller;
 
 import com.czy.domain.User;
+import com.czy.service.ResumeService;
 import com.czy.service.UserService;
 import com.fasterxml.jackson.databind.Module;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,14 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@CrossOrigin
 public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ResumeService resumeService;
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
@@ -28,6 +32,8 @@ public class UserController {
         User tempUser = userService.findUserByPhone(user.getPhone());
         if (tempUser==null){
             userService.insertUser(user);
+            //mybatis中已配置  可直接获取刚插入的用户id
+            resumeService.insertResume(user.getId());
             return "注册成功";
         }else {
             return "注册失败，电话号码已存在!";

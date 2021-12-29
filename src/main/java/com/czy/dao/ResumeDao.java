@@ -12,4 +12,15 @@ public interface ResumeDao {
      */
     Resume findResumeByUserId(@Param("userId") Integer userId);
 
+    /**
+     *修改简历
+     */
+    void updateResume(@Param("resume") Resume resume,@Param("updateId")Integer userId);
+
+
+    /**
+     *创建一个空简历 只有id和userId
+     */
+    void insertResume(@Param("userId") Integer userId);
+
 }

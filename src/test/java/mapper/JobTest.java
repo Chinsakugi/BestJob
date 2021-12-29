@@ -1,5 +1,6 @@
 package mapper;
 
+import com.czy.dao.JobDao;
 import com.czy.domain.Job;
 import com.czy.service.JobService;
 import org.junit.Test;
@@ -17,9 +18,30 @@ public class JobTest {
     @Autowired
     JobService jobService;
 
+    @Autowired
+    JobDao jobDao;
+
     @Test
     public void findJobByCompanyIdTest(){
         List<Job> jobList = jobService.findJobList(1);
+        System.out.println(jobList);
+    }
+
+    @Test
+    public void findAllJob(){
+        List<Job> jobList = jobDao.findAllJob();
+        System.out.println(jobList);
+    }
+
+    @Test
+    public void findJobByCompanyNameAndJobCategoryTest(){
+        List<Job> jobList = jobService.findJobByCompanyNameAndJobCategory("字节");
+        System.out.println(jobList);
+    }
+
+    @Test
+    public void findByMultiConditionTest(){
+        List<Job> jobList = jobService.findByMultiCondition("深圳","工程师",null,null,null,null);
         System.out.println(jobList);
     }
 

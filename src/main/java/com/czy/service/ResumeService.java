@@ -6,4 +6,8 @@ public interface ResumeService {
 
     Resume showUserResume(Integer userId);
 
+    void updateResume(Resume resume,Integer userId);
+
+    void insertResume(Integer userId);
+
 }

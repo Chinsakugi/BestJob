@@ -29,9 +29,9 @@ public class UserTest {
 
     @Test
     public void insertUserTest(){
-        User user = new User(null,"bl","123456","1234567");
+        User user = new User(null,"akebi","123456","1111111");
         userService.insertUser(user);
-        findAllUserTest();
+        System.out.println(user.getId());
     }
 
     @Test

@@ -2,7 +2,7 @@ package com.czy.domain;
 
 public class Job {
     private Integer id;
-    private Integer companyId;
+    private String companyName;
     private String jobName;
     private String jobInfo;
     private String jobAddress;
@@ -10,13 +10,14 @@ public class Job {
     private String jobDescription;
     private String jobCategory;
     private String jobRequire;
+    private String postTime;
 
     public Job() {
     }
 
-    public Job(Integer id, Integer companyId, String jobName, String jobInfo, String jobAddress, String salary, String jobDescription, String jobCategory, String jobRequire) {
+    public Job(Integer id, String companyName, String jobName, String jobInfo, String jobAddress, String salary, String jobDescription, String jobCategory, String jobRequire, String postTime) {
         this.id = id;
-        this.companyId = companyId;
+        this.companyName = companyName;
         this.jobName = jobName;
         this.jobInfo = jobInfo;
         this.jobAddress = jobAddress;
@@ -24,6 +25,15 @@ public class Job {
         this.jobDescription = jobDescription;
         this.jobCategory = jobCategory;
         this.jobRequire = jobRequire;
+        this.postTime = postTime;
+    }
+
+    public String getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(String postTime) {
+        this.postTime = postTime;
     }
 
     public Integer getId() {
@@ -34,12 +44,12 @@ public class Job {
         this.id = id;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getJobName() {
@@ -102,7 +112,7 @@ public class Job {
     public String toString() {
         return "Job{" +
                 "id=" + id +
-                ", companyId=" + companyId +
+                ", companyName='" + companyName + '\'' +
                 ", jobName='" + jobName + '\'' +
                 ", jobInfo='" + jobInfo + '\'' +
                 ", jobAddress='" + jobAddress + '\'' +
@@ -110,6 +120,7 @@ public class Job {
                 ", jobDescription='" + jobDescription + '\'' +
                 ", jobCategory='" + jobCategory + '\'' +
                 ", jobRequire='" + jobRequire + '\'' +
+                ", postTime='" + postTime + '\'' +
                 '}';
     }
 }

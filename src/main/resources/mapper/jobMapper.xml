@@ -4,7 +4,64 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czy.dao.JobDao">
 
-    <select id="findJobByCompany" resultType="job">
-        select * from job where companyId = #{companyId}
+    <!-- jobDetail 的resultMap   -->
+    <resultMap id="jobMap" type="job">
+        <id property="id" column="id"/>
+        <result property="companyName" column="companyName"/>
+        <result property="jobName" column="jobName"/>
+        <result property="jobInfo" column="jobInfo"/>
+        <result property="jobAddress" column="jobAddress"/>
+        <result property="salary" column="salary"/>
+        <result property="jobDescription" column="jobDescription"/>
+        <result property="jobCategory" column="jobCategory"/>
+        <result property="jobRequire" column="jobRequire"/>
+        <result property="postTime" column="postTime"/>
+    </resultMap>
+
+    <resultMap id="recordMap" type="record">
+        <id property="id" column="id"/>
+        <result property="jobName" column="jobName"/>
+        <result property="jobAddress" column="jobAddress"/>
+        <result property="companyName" column="companyName"/>
+        <result property="event" column="event"/>
+        <result property="processTime" column="processTime"/>
+    </resultMap>
+
+    <select id="findAllJob" resultMap="jobMap">
+        select *
+        from job
+                 join company on job.companyId = company.id
+    </select>
+
+    <select id="findJobByCompanyNameAndJobCategory" resultMap="jobMap">
+        select *
+        from job
+                 join company on job.companyId = company.id
+        where companyName like "%"#{keyword}"%"
+        union
+        select *
+        from job
+                 join company on job.companyId = company.id
+        where jobCategory like "%"#{keyword}"%"
+    </select>
+
+    <select id="findByMultiCondition" resultMap="jobMap">
+        select *
+        from job join company on job.companyId = company.id
+        <where>
+            1 = 1
+            <if test="loc != null and loc !='' ">
+               and jobAddress like "%"#{loc}"%"
+            </if>
+            <if test="search != null and search !='' ">
+                and jobCategory like "%"#{search}"%"
+            </if>
+            <if test="time != null and time !='' ">
+                and postTime like "%"#{time}"%"
+            </if>
+            <if test="money != null and money !='' ">
+                and salary like "%"#{money}"%"
+            </if>
+        </where>
     </select>
 </mapper>

@@ -18,4 +18,14 @@ public class JobServiceImpl implements JobService {
     public List<Job> findJobList(Integer companyId) {
         return jobDao.findJobByCompany(companyId);
     }
+
+    @Override
+    public List<Job> findJobByCompanyNameAndJobCategory(String keyword) {
+        return jobDao.findJobByCompanyNameAndJobCategory(keyword);
+    }
+
+    @Override
+    public List<Job> findByMultiCondition(String loc, String search, String time, String money, String experience, String education) {
+        return jobDao.findByMultiCondition(loc,search,time,money,experience,education);
+    }
 }

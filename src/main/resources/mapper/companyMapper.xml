@@ -9,7 +9,7 @@
     </select>
 
     <insert id="insertCompany" parameterType="company">
-        insert into company values (#{id},#{password},#{companyName},#{address},#{description},#{username},#{email})
+        insert into company values (null ,#{password},#{companyName},#{address},#{description},#{username},#{email})
     </insert>
 
     <update id="updateCompany" parameterType="company">
