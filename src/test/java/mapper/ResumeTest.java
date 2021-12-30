@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:application.xml")
 public class ResumeTest {
@@ -39,9 +41,15 @@ public class ResumeTest {
         resumeService.updateResume(resume,userId);
     }
 
+//    @Test
+//    public void insertResume(){
+//        resumeService.insertResume(3);
+//    }
+
     @Test
-    public void insertResume(){
-        resumeService.insertResume(3);
+    public void showResumeByJobIdTest(){
+        List<Resume> resumes = resumeService.showResumeByJobId(1,1);
+        System.out.println(resumes);
     }
 
 }

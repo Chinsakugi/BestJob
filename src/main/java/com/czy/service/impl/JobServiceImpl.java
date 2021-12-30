@@ -34,4 +34,24 @@ public class JobServiceImpl implements JobService {
     public List<Record> findRecordByUserId(Integer userId) {
         return jobDao.findRecordByUserId(userId);
     }
+
+    @Override
+    public void insertRecord(Integer userId, Integer jobId) {
+        jobDao.insertRecord(userId,jobId);
+    }
+
+    @Override
+    public List<Job> findJobByCompany(Integer companyId) {
+        return jobDao.findJobByCompany(companyId);
+    }
+
+    @Override
+    public void insertJob(String jobName, String jobInfo, String jobAddress, String salary, String jobDescription, String jobCategory, String jobRequire, Integer companyId, String postTime) {
+        jobDao.insertJob(jobName,jobInfo,jobAddress,salary,jobDescription,jobCategory,jobRequire,companyId,postTime);
+    }
+
+    @Override
+    public void deleteJob(Integer jobId,Integer companyId) {
+        jobDao.deleteJob(jobId,companyId);
+    }
 }

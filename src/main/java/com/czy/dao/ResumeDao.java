@@ -4,6 +4,8 @@ import com.czy.domain.Resume;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ResumeDao {
 
@@ -22,5 +24,7 @@ public interface ResumeDao {
      *创建一个空简历 只有id和userId
      */
     void insertResume(@Param("userId") Integer userId);
+
+    List<Resume> showResumeByJobId(@Param("companyId") Integer companyId,@Param("jobId") Integer jobId);
 
 }

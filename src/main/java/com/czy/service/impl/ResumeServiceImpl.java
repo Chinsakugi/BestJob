@@ -6,6 +6,8 @@ import com.czy.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ResumeServiceImpl implements ResumeService {
 
@@ -25,5 +27,10 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public void insertResume(Integer userId) {
         resumeDao.insertResume(userId);
+    }
+
+    @Override
+    public List<Resume> showResumeByJobId(Integer companyId, Integer jobId) {
+        return resumeDao.showResumeByJobId(companyId,jobId);
     }
 }

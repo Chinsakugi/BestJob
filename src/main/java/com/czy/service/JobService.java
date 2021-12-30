@@ -17,4 +17,13 @@ public interface JobService {
 
     List<Record> findRecordByUserId(Integer userId);
 
+    void insertRecord(Integer userId, Integer jobId);
+
+    List<Job> findJobByCompany(Integer companyId);
+
+    void insertJob(String jobName, String jobInfo,String jobAddress, String salary, String jobDescription,
+                   String jobCategory,String jobRequire,Integer companyId, String postTime);
+
+    void deleteJob(Integer jobId,Integer companyId);
+
 }

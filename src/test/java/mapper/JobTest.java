@@ -52,4 +52,27 @@ public class JobTest {
         System.out.println(recordList);
     }
 
+//    @Test
+//    public void insetRecordTest(){
+//        jobService.insertRecord(2,3);
+//        List<Record> recordList = jobService.findRecordByUserId(2);
+//        System.out.println(recordList);
+//    }
+
+    @Test
+    public void findJobByCompanyTest(){
+        List<Job> jobList = jobService.findJobByCompany(1);
+        System.out.println(jobList);
+    }
+
+//    @Test
+//    public void insertJobTest(){
+//        jobService.insertJob("test","test","test","test","test",
+//                             "test","test",1,"test");
+//    }
+
+    @Test
+    public void deleteJobTest(){
+        jobService.deleteJob(10,1);
+    }
 }

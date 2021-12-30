@@ -36,6 +36,10 @@
         from job join company on job.companyId = company.id
     </select>
 
+    <select id="findJobByCompany" resultMap="jobMap">
+        select * from job join company on job.companyId = company.id where companyId = #{companyId}
+    </select>
+
     <select id="findJobByCompanyNameAndJobCategory" resultMap="jobMap">
         select *
         from job
@@ -72,4 +76,18 @@
         select *,user.id uid,job.id jid from user join record join job join company on user.id = record.userId and record.jobId = job.id and job.companyId = company.id
         where user.id = #{userId}
     </select>
+
+    <insert id="insertRecord">
+        insert into record values (#{userId},#{jobId},null,null,null ,null ,null)
+    </insert>
+
+    <insert id="insertJob">
+        insert into job values (null ,#{jobName},#{jobInfo},#{jobAddress},#{salary},#{jobDescription},#{jobCategory},
+                                #{jobRequire},#{companyId},#{postTime})
+    </insert>
+
+    <delete id="deleteJob">
+        delete from job where id = #{jobId} and companyId = #{companyId}
+    </delete>
+
 </mapper>

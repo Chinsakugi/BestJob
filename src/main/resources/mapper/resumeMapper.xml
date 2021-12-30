@@ -4,6 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czy.dao.ResumeDao">
 
+    <resultMap id="resumeMap" type="resume">
+        <id property="id" column="rid"/>
+        <result property="userId" column="uid"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="card" column="card"/>
+        <result property="loc" column="loc"/>
+        <result property="school" column="school"/>
+        <result property="major" column="major"/>
+        <result property="education" column="education"/>
+        <result property="grade" column="grade"/>
+        <result property="company" column="company"/>
+        <result property="work_time" column="work_time"/>
+        <result property="work_position" column="work_position"/>
+        <result property="work_description" column="work_description"/>
+        <result property="project" column="project"/>
+        <result property="project_position" column="project_position"/>
+        <result property="project_time" column="project_time"/>
+        <result property="project_description" column="project_description"/>
+        <result property="self_judge" column="self_judge"/>
+    </resultMap>
+
     <select id="findResumeByUserId" resultType="resume">
         select * from resume where userId = #{userId}
     </select>
@@ -22,5 +45,10 @@
         insert into resume values (null ,#{userId},null,null ,null,null ,null ,null ,null ,null ,null
                                    ,null ,null ,null ,null ,null ,null ,null ,null ,null ,null )
     </insert>
+
+    <select id="showResumeByJobId" resultMap="resumeMap">
+        select *,resume.id rid, resume.userId uid from job join record join resume on job.id=record.jobId and record.userId = resume.userId
+        where job.companyId = #{companyId} and job.id = #{jobId}
+    </select>
 
 </mapper>

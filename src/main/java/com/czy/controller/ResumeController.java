@@ -1,16 +1,18 @@
 package com.czy.controller;
 
+import com.czy.domain.Company;
 import com.czy.domain.Resume;
 import com.czy.domain.User;
 import com.czy.service.ResumeService;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -42,9 +44,20 @@ public class ResumeController {
         }
     }
 
+    @RequestMapping(value = "/jobApply",method = RequestMethod.GET)
+    @ResponseBody
+    public Object getResumesByJob(@RequestParam("session") HttpSession session,@RequestParam("id") Integer jobId){
+        Company company = (Company) session.getAttribute("company");
+        if (company==null){
+            return "error";
+        }
+        List<Resume> resumeList = resumeService.showResumeByJobId(company.getId(),jobId);
+        return resumeList;
+    }
+
     @RequestMapping(value = "/personal",method = RequestMethod.POST)
     @ResponseBody
-    public void upload(@RequestParam MultipartFile file, HttpServletRequest request, HttpResponse response) throws IOException {
+    public void upload(@RequestParam MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String filename = file.getOriginalFilename();
         String upload = request.getServletContext().getRealPath("upload/");
 

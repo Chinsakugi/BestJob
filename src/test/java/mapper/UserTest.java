@@ -3,6 +3,7 @@ package mapper;
 import com.czy.dao.UserDao;
 import com.czy.domain.User;
 import com.czy.service.UserService;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,12 @@ public class UserTest {
         System.out.println(userList);
     }
 
-    @Test
-    public void insertUserTest(){
-        User user = new User(null,"akebi","123456","1111111");
-        userService.insertUser(user);
-        System.out.println(user.getId());
-    }
+//    @Test
+//    public void insertUserTest(){
+//        User user = new User(null,"akebi","123456","1111111");
+//        userService.insertUser(user);
+//        System.out.println(user.getId());
+//    }
 
     @Test
     public void updateUserTest(){
@@ -57,5 +58,11 @@ public class UserTest {
     public void findUserByPhoneTest(){
         User user = userService.findUserByPhone("11111");
         System.out.println(user);
+    }
+
+    @Test
+    public void utilsTest(){
+        boolean result = NumberUtils.isDigits("19921879687");
+        System.out.println(result);
     }
 }
