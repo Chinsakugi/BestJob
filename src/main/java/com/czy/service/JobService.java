@@ -26,4 +26,11 @@ public interface JobService {
 
     void deleteJob(Integer jobId,Integer companyId);
 
+    void updateJob(Integer jobId,String jobName, String jobInfo,String jobAddress,
+                   String salary, String jobDescription,
+                   String jobCategory,String jobRequire,Integer companyId,
+                   String postTime);
+
+    Record findRecordByUserIdAndJobId(Integer userId, Integer jobId);
+
 }

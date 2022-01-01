@@ -23,7 +23,7 @@ public interface ResumeDao {
     /**
      *创建一个空简历 只有id和userId
      */
-    void insertResume(@Param("userId") Integer userId);
+    void insertResume(Resume resume);
 
     List<Resume> showResumeByJobId(@Param("companyId") Integer companyId,@Param("jobId") Integer jobId);
 

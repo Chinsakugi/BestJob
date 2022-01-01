@@ -38,4 +38,9 @@ public class CompanyServiceImpl implements CompanyService {
     public Company findCompanyById(Integer id) {
         return companyDao.findCompanyById(id);
     }
+
+    @Override
+    public Company findCompanyByUsername(String username) {
+        return companyDao.findCompanyByUsername(username);
+    }
 }

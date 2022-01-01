@@ -14,4 +14,6 @@ public interface CompanyService {
     Company login(String username, String password);
 
     Company findCompanyById(Integer id);
+
+    Company findCompanyByUsername(String username);
 }

@@ -26,4 +26,6 @@ public interface CompanyDao {
     Company findCompanyByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     Company findCompanyById(@Param("id")Integer id);
+
+    Company findCompanyByUsername(@Param("username")String username);
 }

@@ -71,8 +71,20 @@ public class JobTest {
 //                             "test","test",1,"test");
 //    }
 
+//    @Test
+//    public void deleteJobTest(){
+//        jobService.deleteJob(10,1);
+//    }
+
+//    @Test
+//    public void updateJobTest(){
+//        jobService.updateJob(18,"2222",null,null,null,null,null,null
+//                            ,2,null);
+//    }
+
     @Test
-    public void deleteJobTest(){
-        jobService.deleteJob(10,1);
+    public void findRecordByUserIdAndJobIdTest(){
+        Record record = jobService.findRecordByUserIdAndJobId(2,2);
+        System.out.println(record);
     }
 }

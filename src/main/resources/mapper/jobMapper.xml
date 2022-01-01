@@ -63,11 +63,23 @@
             <if test="search != null and search !='' ">
                 and jobCategory like "%"#{search}"%"
             </if>
-            <if test="time != null and time !='' ">
-                and postTime like "%"#{time}"%"
+            <if test="postTime != null and postTime !='' ">
+                and DATEDIFF(curdate(), CAST( postTime as date )) <![CDATA[<=]]> #{postTime}
             </if>
-            <if test="money != null and money !='' ">
-                and salary like "%"#{money}"%"
+            <if test="leftSalary != null and leftSalary !='' ">
+                and SUBSTRING_INDEX( SUBSTRING_INDEX(salary,'万', 1 ),'-',1 ) * 10000 <![CDATA[>=]]> #{leftSalary}
+            </if>
+            <if test="rightSalary != null and rightSalary !='' ">
+                and SUBSTRING_INDEX( SUBSTRING_INDEX(salary,'万', 1 ),'-',1 ) * 10000 <![CDATA[<=]]> #{rightSalary}
+            </if>
+            <if test="leftYear != null and leftYear !='' ">
+                and CAST( SUBSTRING_INDEX(jobInfo,'|',1)  as UNSIGNED ) <![CDATA[>]]> #{leftYear}
+            </if>
+            <if test="rightYear != null and rightYear !='' ">
+                and CAST( SUBSTRING_INDEX(jobInfo,'|',1)  as UNSIGNED ) <![CDATA[<]]> #{rightYear}
+            </if>
+            <if test="education != null and education !='' ">
+                and jobInfo like "%"#{education}"%"
             </if>
         </where>
     </select>
@@ -75,6 +87,10 @@
     <select id="findRecordByUserId" resultMap="recordMap">
         select *,user.id uid,job.id jid from user join record join job join company on user.id = record.userId and record.jobId = job.id and job.companyId = company.id
         where user.id = #{userId}
+    </select>
+
+    <select id="findRecordByUserIdAndJobId" resultType="record">
+        select * from record where userId = #{userId} and jobId = #{jobId}
     </select>
 
     <insert id="insertRecord">
@@ -89,5 +105,37 @@
     <delete id="deleteJob">
         delete from job where id = #{jobId} and companyId = #{companyId}
     </delete>
+
+    <update id="updateJob">
+        update job set
+        <if test="jobName != null and jobName !='' ">
+            jobName = #{jobName},
+        </if>
+        <if test="jobInfo != null and jobInfo !='' ">
+            jobInfo = #{jobInfo},
+        </if>
+        <if test="jobAddress != null and jobAddress !='' ">
+            jobAddress = #{jobAddress},
+        </if>
+        <if test="salary != null and salary !='' ">
+            salary = #{salary},
+        </if>
+        <if test="jobDescription != null and jobDescription !='' ">
+            jobDescription = #{jobDescription},
+        </if>
+        <if test="jobName != null and jobName !='' ">
+            jobName = #{jobName},
+        </if>
+        <if test="jobCategory != null and jobCategory !='' ">
+            jobCategory = #{jobCategory},
+        </if>
+        <if test="jobRequire != null and jobRequire !='' ">
+            jobRequire = #{jobRequire},
+        </if>
+        <if test="postTime != null and postTime !='' ">
+            postTime = #{postTime}
+        </if>
+        where id = #{jobId} and companyId = #{companyId}
+    </update>
 
 </mapper>

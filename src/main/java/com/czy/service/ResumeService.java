@@ -10,7 +10,7 @@ public interface ResumeService {
 
     void updateResume(Resume resume,Integer userId);
 
-    void insertResume(Integer userId);
+    void insertResume(Resume resume);
 
     List<Resume> showResumeByJobId(Integer companyId, Integer jobId);
 

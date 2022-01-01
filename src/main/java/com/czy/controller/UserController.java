@@ -1,6 +1,7 @@
 package com.czy.controller;
 
 import com.czy.domain.Company;
+import com.czy.domain.Resume;
 import com.czy.domain.User;
 import com.czy.service.CompanyService;
 import com.czy.service.ResumeService;
@@ -33,21 +34,28 @@ public class UserController {
     @Autowired
     CompanyService companyService;
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    //2
+
+    @PostMapping("/register")
     @ResponseBody
     public Object register(@RequestBody User user){
         User tempUser = userService.findUserByPhone(user.getPhone());
         if (tempUser==null){
             userService.insertUser(user);
+            //System.out.println(user);
             //mybatis中已配置  可直接获取刚插入的用户id
-            resumeService.insertResume(user.getId());
+            Resume resume = new Resume();
+            resume.setUserId(user.getId());
+            resumeService.insertResume(resume);
             return "注册成功";
         }else {
             return "注册失败，电话号码已存在!";
         }
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    //1
+
+    @PostMapping("/login")
     @ResponseBody
     public Object login(@RequestBody User user,HttpSession session){
         String phone = user.getPhone();
@@ -61,7 +69,7 @@ public class UserController {
                 return "用户名或密码错误!";
             } else {
                 session.setAttribute("user",loginUser);
-                return session;
+                return loginUser.getPhone();
             }
         }else {
             Company companyUser = companyService.login(phone,password);
@@ -69,7 +77,7 @@ public class UserController {
                 return "企业用户不存在或密码错误";
             }else {
                 session.setAttribute("company",companyUser);
-                return session;
+                return companyUser.getUsername();
             }
         }
 

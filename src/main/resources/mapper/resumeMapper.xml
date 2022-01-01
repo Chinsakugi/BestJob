@@ -28,27 +28,88 @@
     </resultMap>
 
     <select id="findResumeByUserId" resultType="resume">
-        select * from resume where userId = #{userId}
+        select *
+        from resume
+        where userId = #{userId}
     </select>
 
     <update id="updateResume">
-        update resume set name = #{resume.name}, phone = #{resume.phone}, email=#{resume.email},card=#{resume.card},
-                          loc=#{resume.loc},school=#{resume.school},major=#{resume.major},edu_time=#{resume.edu_time},
-                          education=#{resume.education},grade=#{resume.grade},company=#{resume.company},work_time=#{resume.work_time},
-                          work_position=#{resume.work_position},work_description=#{resume.work_description},project=#{resume.project},
-                          project_position=#{resume.project_position},project_time=#{resume.project_time},project_description=#{resume.project_description},
-                          self_judge=#{resume.self_judge}
+        update resume
+        <trim prefix="set" suffixOverrides=",">
+            <if test="resume.name != null and resume.name !='' ">
+                name = #{resume.name},
+            </if>
+            <if test="resume.phone != null and resume.phone !='' ">
+                phone = #{resume.phone},
+            </if>
+            <if test="resume.email != null and resume.email !='' ">
+                email = #{resume.email},
+            </if>
+            <if test="resume.card != null and resume.card !='' ">
+                card = #{resume.card},
+            </if>
+            <if test="resume.loc != null and resume.loc !='' ">
+                loc = #{resume.loc},
+            </if>
+            <if test="resume.school != null and resume.school !='' ">
+                school = #{resume.school},
+            </if>
+            <if test="resume.major != null and resume.major !='' ">
+                major = #{resume.major},
+            </if>
+            <if test="resume.edu_time != null and resume.edu_time !='' ">
+                edu_time = #{resume.edu_time},
+            </if>
+            <if test="resume.education != null and resume.education !='' ">
+                education = #{resume.education},
+            </if>
+            <if test="resume.grade != null and resume.grade !='' ">
+                grade = #{resume.grade},
+            </if>
+            <if test="resume.company != null and resume.company !='' ">
+                company = #{resume.company},
+            </if>
+            <if test="resume.work_time != null and resume.work_time !='' ">
+                work_time = #{resume.work_time},
+            </if>
+            <if test="resume.work_position != null and resume.work_position !='' ">
+                work_position = #{resume.work_position},
+            </if>
+            <if test="resume.work_description != null and resume.work_description !='' ">
+                work_description = #{resume.work_description},
+            </if>
+            <if test="resume.project != null and resume.project !='' ">
+                project = #{resume.project},
+            </if>
+            <if test="resume.project_position != null and resume.project_position !='' ">
+                project_position = #{resume.project_position},
+            </if>
+            <if test="resume.project_time != null and resume.project_time !='' ">
+                project_time = #{resume.project_time},
+            </if>
+            <if test="resume.project_description != null and resume.project_description !='' ">
+                project_description = #{resume.project_description},
+            </if>
+            <if test="resume.self_judge != null and resume.self_judge !='' ">
+                self_judge = #{resume.self_judge},
+            </if>
+        </trim>
         where userId = #{updateId}
     </update>
 
-    <insert id="insertResume" keyProperty="id" useGeneratedKeys="true">
-        insert into resume values (null ,#{userId},null,null ,null,null ,null ,null ,null ,null ,null
-                                   ,null ,null ,null ,null ,null ,null ,null ,null ,null ,null )
+    <insert id="insertResume" parameterType="resume" keyProperty="id" useGeneratedKeys="true">
+        insert into resume
+        values ( null, #{userId}, null, null, null, null, null, null, null, null, null
+               , null, null, null, null, null, null, null, null, null, null)
     </insert>
 
     <select id="showResumeByJobId" resultMap="resumeMap">
-        select *,resume.id rid, resume.userId uid from job join record join resume on job.id=record.jobId and record.userId = resume.userId
-        where job.companyId = #{companyId} and job.id = #{jobId}
+        select *, resume.id rid, resume.userId uid
+        from job
+                 join record
+                 join resume on job.id = record.jobId and record.userId = resume.userId
+        where job.companyId = #{companyId}
+          and job.id = #{jobId}
     </select>
 
 </mapper>

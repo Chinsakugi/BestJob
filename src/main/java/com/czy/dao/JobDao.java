@@ -19,8 +19,8 @@ public interface JobDao {
 
     List<Job> findJobByCompanyNameAndJobCategory(@Param("keyword") String keyword);
 
-    List<Job> findByMultiCondition(@Param("loc") String loc, @Param("search") String search, @Param("time") String time,
-                                   @Param("money") String money, @Param("experience") String experience,@Param("education") String education);
+    List<Job> findByMultiCondition(@Param("loc") String loc, @Param("search") String search, @Param("postTime") Integer postTime,
+                                   @Param("leftSalary") Integer leftSalary, @Param("rightSalary") Integer rightSalary,@Param("leftYear") Integer leftYear,@Param("rightYear") Integer rightYear, @Param("education") String education);
 
     List<Record> findRecordByUserId(@Param("userId") Integer userId);
 
@@ -36,5 +36,13 @@ public interface JobDao {
 
     void deleteJob(@Param("jobId") Integer jobId, @Param("companyId")Integer companyId);
 
-    void updateRecord();
+    void updateJob(@Param("jobId")Integer jobId,@Param("jobName") String jobName, @Param("jobInfo")String jobInfo,@Param("jobAddress") String jobAddress,
+                   @Param("salary") String salary, @Param("jobDescription")String jobDescription,
+                   @Param("jobCategory")String jobCategory,@Param("jobRequire") String jobRequire,@Param("companyId") Integer companyId,
+                   @Param("postTime") String postTime);
+
+    Record findRecordByUserIdAndJobId(@Param("userId")Integer userId, @Param("jobId")Integer jobId);
+
+
+
 }

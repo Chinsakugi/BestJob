@@ -25,8 +25,8 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void insertResume(Integer userId) {
-        resumeDao.insertResume(userId);
+    public void insertResume(Resume resume) {
+        resumeDao.insertResume(resume);
     }
 
     @Override

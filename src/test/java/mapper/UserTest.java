@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -64,5 +65,12 @@ public class UserTest {
     public void utilsTest(){
         boolean result = NumberUtils.isDigits("19921879687");
         System.out.println(result);
+    }
+
+    @Test
+    public void timeTest(){
+        LocalDate date = LocalDate.now();
+        String postTime = date.toString();
+        System.out.println(postTime);
     }
 }
