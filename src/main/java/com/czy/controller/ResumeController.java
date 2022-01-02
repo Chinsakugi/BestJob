@@ -107,24 +107,16 @@ public class ResumeController {
         return resultList;
     }//14
 
-    @GetMapping("/personal1")
+    @PostMapping("/personal")
     @ResponseBody
-    public void upload(@RequestParam MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String filename = file.getOriginalFilename();
-        String upload = request.getServletContext().getRealPath("upload/");
-
-        File fileDir = new File(upload);
-        File[] files = fileDir.listFiles();
-        for (File f : files){
-            f.delete();
+    public Object upload(@RequestParam MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (file!=null){
+            String originFilename = file.getOriginalFilename();
+            System.out.println(originFilename);
+            return "上传成功";
+        }else {
+            return "上传失败";
         }
-
-        String path = upload+filename;
-        File filePath = new File(path);
-        BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filePath));
-        outputStream.write(file.getBytes());
-        outputStream.flush();
-        outputStream.close();
     }//5
 
 }

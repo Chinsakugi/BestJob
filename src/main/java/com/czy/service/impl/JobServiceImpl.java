@@ -69,7 +69,12 @@ public class JobServiceImpl implements JobService {
             }
         }
 
-        return jobDao.findByMultiCondition(loc,search,postTime,leftSalary,rightSalary,leftYear,rightYear,education);
+        String category = null;
+        if (search!=null){
+            category =  search.split(",")[0];
+        }
+
+        return jobDao.findByMultiCondition(loc,category,postTime,leftSalary,rightSalary,leftYear,rightYear,education);
     }
 
     @Override

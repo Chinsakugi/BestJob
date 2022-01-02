@@ -67,10 +67,4 @@ public class UserTest {
         System.out.println(result);
     }
 
-    @Test
-    public void timeTest(){
-        LocalDate date = LocalDate.now();
-        String postTime = date.toString();
-        System.out.println(postTime);
-    }
 }

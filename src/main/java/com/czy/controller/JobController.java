@@ -41,7 +41,6 @@ public class JobController {
 //        return jobList;
 //    }
 
-    //多条件筛选
     @GetMapping("/jobs")
     @ResponseBody
     public Object findByMultiCondition(@RequestParam(value = "keyword",required = false) String keyword, @RequestParam(value = "loc",required = false)String loc, @RequestParam(value = "search",required = false) String search,@RequestParam(value = "time",required = false) String time,
@@ -56,7 +55,7 @@ public class JobController {
         List<Job> jobList;
         if (keyword!=null){
             jobList = jobService.findJobByCompanyNameAndJobCategory(keyword);
-        }else {
+        }else{
             jobList = jobService.findByMultiCondition(loc, search, time, money, experience, education);
         }
         return jobList;
