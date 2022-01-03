@@ -173,7 +173,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.xxg.Main</mainClass>
+                            <mainClass>com.czy.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
